@@ -121,6 +121,7 @@ jobs:
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@main
+        if: steps.tag.outputs.status == 'success' && !cancelled()
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
@@ -129,7 +130,7 @@ jobs:
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@master
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        if: steps.tag.outputs.status == 'success' && !cancelled()
         with:
           keep_latest: 4
           delete_tags: true
