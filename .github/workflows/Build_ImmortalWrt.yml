@@ -89,7 +89,6 @@ jobs:
       - name: Organize files
         id: organize
         run: |
-          cp openwrt/.config openwrt/bin/targets/*/*/.config
           cd openwrt/bin/targets/*/*
           ls -lh
           rm -rf packages
