@@ -2,8 +2,8 @@ name: Build LEDE
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 4 * * 5"
+  # schedule:
+    # - cron: "0 4 * * 5"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
