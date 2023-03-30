@@ -2,8 +2,8 @@ name: Build Openwrt
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "0 4 * * *"
+  schedule:
+    - cron: "0 4 */2 * *"
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
