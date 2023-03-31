@@ -126,13 +126,13 @@ jobs:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
           retain_days: 1
-          keep_minimum_runs: 3
+          keep_minimum_runs: 1
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@master
         if: steps.tag.outputs.status == 'success' && !cancelled()
         with:
-          keep_latest: 3
+          keep_latest: 4
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
