@@ -7,10 +7,9 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: openwrt/openwrt.config
-  DIY_P1_SH: openwrt/diy-part1.sh
-  DIY_P2_SH: openwrt/diy-part2.sh
+  CONFIG_FILE: ow/openwrt.config
+  DIY_P1_SH: ow/diy-part1.sh
+  DIY_P2_SH: ow/diy-part2.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -39,13 +38,13 @@ jobs:
         working-directory: /workdir
         run: |
           git clone --depth 1 $REPO_URL openwrt
+          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
       - name: Load custom feeds
         run: |
-          [ -e $DIY_P1_SH ] && mv $DIY_P1_SH openwrt/diy-part1.sh
-          chmod +x openwrt/diy-part1.sh
+          chmod +x $DIY_P1_SH
           cd openwrt
-          $GITHUB_WORKSPACE/diy-part1.sh
+          $GITHUB_WORKSPACE/$DIY_P1_SH
 
       - name: Update feeds
         run: cd openwrt && ./scripts/feeds update -a
@@ -57,10 +56,9 @@ jobs:
         run: |
           [ -e files ] && mv files openwrt/files
           [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-          [ -e $DIY_P2_SH ] && mv $DIY_P2_SH openwrt/diy-part2.sh
-          chmod +x openwrt/diy-part2.sh
+          chmod +x $DIY_P2_SH
           cd openwrt
-          $GITHUB_WORKSPACE/diy-part2.sh
+          $GITHUB_WORKSPACE/$DIY_P2_SH
 
       - name: Download package
         id: package
