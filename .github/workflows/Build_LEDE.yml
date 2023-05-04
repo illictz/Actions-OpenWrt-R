@@ -2,8 +2,8 @@ name: Build LEDE
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 4 * * *"
+  # schedule:
+  #   - cron: "0 4 * * *"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -131,7 +131,7 @@ jobs:
         uses: dev-drprasad/delete-older-releases@master
         if: steps.tag.outputs.status == 'success' && !cancelled()
         with:
-          keep_latest: 3
+          keep_latest: 2
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
