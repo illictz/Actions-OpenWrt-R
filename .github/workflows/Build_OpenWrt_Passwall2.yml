@@ -1,4 +1,4 @@
-name: Build OpenWrt
+name: Build OpenWrt with Passwall2
 
 on:
   workflow_dispatch:
@@ -8,9 +8,9 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: op/openwrt.config
-  DIY_P1_SH: op/diy-part1.sh
-  DIY_P2_SH: op/diy-part2.sh
+  CONFIG_FILE: openwrt-passwall2/openwrt.config
+  DIY_P1_SH: openwrt-passwall2/diy-part1.sh
+  DIY_P2_SH: openwrt-passwall2/diy-part2.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -128,7 +128,7 @@ jobs:
         uses: dev-drprasad/delete-older-releases@master
         if: steps.tag.outputs.status == 'success' && !cancelled()
         with:
-          keep_latest: 2
+          keep_latest: 3
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
