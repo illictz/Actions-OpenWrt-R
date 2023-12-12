@@ -1,4 +1,4 @@
-name: Build LEDE with Passwall2
+name: Build LEDE
 
 on:
   workflow_dispatch:
@@ -8,9 +8,9 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: lede-passwall2/lede.config
-  DIY_P1_SH: lede-passwall2/diy-part1.sh
-  DIY_P2_SH: lede-passwall2/diy-part2.sh
+  CONFIG_FILE: lede/lede.config
+  DIY_P1_SH: lede/diy-part1.sh
+  DIY_P2_SH: lede/diy-part2.sh
   TZ: Asia/Shanghai
 
 jobs:
