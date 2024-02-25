@@ -89,6 +89,7 @@ jobs:
           cd openwrt/bin/targets/*/*
           ls -lh
           rm -rf packages
+          rm -f !(*-combined.img.gz)
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
 
