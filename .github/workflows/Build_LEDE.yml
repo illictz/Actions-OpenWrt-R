@@ -7,7 +7,6 @@ on:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
-  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: lede/lede.config
   DIY_P1_SH: lede/diy-part1.sh
   DIY_P2_SH: lede/diy-part2.sh
@@ -47,7 +46,7 @@ jobs:
 
       - name: Load custom feeds
         run: |
-          [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+          ls -al
           chmod +x $DIY_P1_SH
           cd openwrt
           $GITHUB_WORKSPACE/$DIY_P1_SH
