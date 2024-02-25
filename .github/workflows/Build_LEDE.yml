@@ -7,9 +7,9 @@ on:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
-  CONFIG_FILE: lede/lede.config
-  DIY_P1_SH: lede/diy-part1.sh
-  DIY_P2_SH: lede/diy-part2.sh
+  CONFIG_FILE: lede-config/lede.config
+  DIY_P1_SH: lede-config/diy-part1.sh
+  DIY_P2_SH: lede-config/diy-part2.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -43,6 +43,7 @@ jobs:
         run: |
           git clone --depth 1 $REPO_URL openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+          ls -al
 
       - name: Load custom feeds
         run: |

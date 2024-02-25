@@ -7,10 +7,9 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: openwrt/openwrt.config
-  DIY_P1_SH: openwrt/diy-part1.sh
-  DIY_P2_SH: openwrt/diy-part2.sh
+  CONFIG_FILE: openwrt-config/openwrt.config
+  DIY_P1_SH: openwrt-config/diy-part1.sh
+  DIY_P2_SH: openwrt-config/diy-part2.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -41,10 +40,11 @@ jobs:
         run: |
           git clone --depth 1 $REPO_URL openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+          ls -al
 
       - name: Load custom feeds
         run: |
-          [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+          ls -al
           chmod +x $DIY_P1_SH
           cd openwrt
           $GITHUB_WORKSPACE/$DIY_P1_SH
