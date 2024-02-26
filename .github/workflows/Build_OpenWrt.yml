@@ -90,7 +90,7 @@ jobs:
           ls -lh
           rm -rf packages
           shopt -s extglob
-          rm -f !(-combined.img.gz)
+          rm -f !(*-combined.img.gz)
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
 
